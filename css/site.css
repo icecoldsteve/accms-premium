@@ -758,3 +758,25 @@ html.lenis, html.lenis body { height: auto; }
   max-width: 180px;
   filter: none;
 }
+
+/* iOS / mobile video fix */
+.hero-visual {
+  display: block;
+  width: 100%;
+  min-height: 200px;
+}
+.hero-video {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  object-fit: cover;
+  background: #111;
+}
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual {
+    order: -1; /* video first on mobile */
+    aspect-ratio: 16 / 9;
+    margin-bottom: 16px;
+  }
+}
