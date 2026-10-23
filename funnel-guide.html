@@ -129,3 +129,65 @@ if(sessionStorage.getItem('accms-funnel')==='ok'){gate.style.display='none';cont
 </script>
 </body>
 </html>
+
+    <h2 style="margin-top:48px">Diepere scripts & hooks</h2>
+
+    <article class="format">
+      <h3>Hook-formules die werken</h3>
+      <ul>
+        <li>“POV: je date een girl die altijd laat is”</li>
+        <li>“3 dingen die alleen Vlamingen begrijpen”</li>
+        <li>“Wanneer je in Antwerpen probeert te parkeren”</li>
+        <li>“Gym girl problems — deel 4”</li>
+        <li>“Welke look past beter? Stem in comments”</li>
+      </ul>
+      <div class="stat">Eerste 1-3 seconden bepalen of iemand blijft. Pattern interrupt of herkenbare situatie scoort het best.</div>
+    </article>
+
+    <article class="format">
+      <h3>Caption-templates</h3>
+      <div class="script">Outfit:
+“Welke look zou jij kiezen? Rest staat op mijn Insta 👀”
+
+Gym:
+“Gym etiquette 101. Meer chaos op mijn andere pagina.”
+
+GRWM:
+“Getting ready. Poll staat in mijn Stories.”
+
+Tease:
+“BTS van gisteren. De rest is niet hier. Link in bio.”</div>
+    </article>
+
+    <article class="format">
+      <h3>Posting-cadans</h3>
+      <table>
+        <tr><th>Platform</th><th>Frequentie</th><th>Beste tijd (BE)</th></tr>
+        <tr><td>TikTok</td><td>1-2x per dag</td><td>18:00-22:00</td></tr>
+        <tr><td>Instagram Reels</td><td>4-5x per week</td><td>12:00-14:00 / 19:00-21:00</td></tr>
+        <tr><td>Stories</td><td>Dagelijks</td><td>Ochtend + avond</td></tr>
+      </table>
+    </article>
+
+    <article class="format">
+      <h3>Wat te vermijden</h3>
+      <ul>
+        <li>Platformnamen (OnlyFans, MYM, Fansly) in bio of caption</li>
+        <li>Expliciete hashtags of “link in bio naar mijn OF”</li>
+        <li>Directe adult-links op TikTok</li>
+        <li>Teveel CTA’s in één video</li>
+        <li>Inconsistente branding tussen platforms</li>
+      </ul>
+    </article>
+    <p style="margin-top:32px;color:var(--muted);font-size:.9rem;">Bronnen: Socialinsider 2026, SirenCY, Umbra, Metricool, Perplexity. Alleen intern.</p>
+  </div>
+</div>
+<script>
+const PIN='6969';
+const pin=document.getElementById('pin'),btn=document.getElementById('unlock'),err=document.getElementById('err'),gate=document.getElementById('gate'),content=document.getElementById('content');
+function go(){if(pin.value===PIN){gate.style.display='none';content.classList.add('visible');sessionStorage.setItem('accms-funnel','ok')}else{err.style.display='block';pin.value='';pin.focus()}}
+btn.onclick=go;pin.onkeydown=e=>{if(e.key==='Enter')go()};
+if(sessionStorage.getItem('accms-funnel')==='ok'){gate.style.display='none';content.classList.add('visible')}
+</script>
+</body>
+</html>
