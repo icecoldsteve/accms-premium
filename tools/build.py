@@ -12,7 +12,7 @@ SITE = Path(sys.argv[1])
 PREVIEW = Path(sys.argv[2])
 DOMAIN = "https://www.accms.agency"
 EMAIL = "info@accms.agency"
-COMPANY = dict(name="SMSAK", owner="Steve Van der Mieren", street="Bosheide 9", postal="8660", city="De Panne",
+COMPANY = dict(name="SMSAK", owner="SMSAK", street="Bosheide 9", postal="8660", city="De Panne",
                kbo="1035.506.672", vat="BE 1035.506.672")
 LEGAL = {
     "nl": f"ACCMS is een handelsnaam van {COMPANY['name']} ({COMPANY['owner']}) · {COMPANY['street']}, {COMPANY['postal']} {COMPANY['city']} · KBO {COMPANY['kbo']} · btw {COMPANY['vat']}",
