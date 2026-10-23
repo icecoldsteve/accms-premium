@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Consultancy Handleiding — ACCMS</title>
+<link rel="stylesheet" href="css/site.css">
+<style>
+.gate { min-height: 100vh; display: grid; place-items: center; background: var(--bg); }
+.gate-box { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px; max-width: 360px; width: 90%; text-align: center; }
+.gate-box h1 { margin: 0 0 8px; font-size: 1.5rem; }
+.gate-box p { color: var(--muted); margin: 0 0 20px; }
+.gate-box input { width: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 12px; font-size: 1.1rem; text-align: center; letter-spacing: .2em; margin-bottom: 12px; }
+.gate-box button { width: 100%; }
+.gate-error { color: #c0392b; font-size: .9rem; margin-top: 8px; display: none; }
+.content { display: none; padding: 40px 0 80px; }
+.content.visible { display: block; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+.phase h2 { margin: 0 0 12px; font-size: 1.35rem; }
+.phase h3 { margin: 16px 0 8px; font-size: 1.1rem; }
+.phase ul, .phase ol { margin: 8px 0; padding-left: 20px; }
+.phase li { margin: 4px 0; }
+.script { background: #faf6ef; border-radius: 10px; padding: 14px; margin: 12px 0; font-family: ui-monospace, monospace; font-size: .9rem; white-space: pre-wrap; }
+.note { background: #fff8e6; border-left: 3px solid var(--accent); padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; }
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <h1>Consultancy Handleiding</h1>
+    <p>Voer de pincode in om de begeleidingsgids te bekijken.</p>
+    <input type="password" id="pin" placeholder="••••" maxlength="4" inputmode="numeric">
+    <button class="btn btn-primary" id="unlock">Ontgrendel</button>
+    <div class="gate-error" id="err">Onjuiste pincode</div>
+  </div>
+</div>
+
+<div class="content" id="content">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label">Intern</p>
+      <h1>Handleiding: Adult Content Creator Funnel</h1>
+      <p>Begeleiding bij het opzetten van TikTok/Instagram → website/linkhub → OnlyFans, MYM of Fansly, inclusief social-setup en UTM-tracking.</p>
+    </header>
+
+    <div class="note">TikTok en Instagram zijn verkeerskanalen. De website is het meetpunt. Het betaalde platform is de conversiebestemming.</div>
+
+    <article class="phase">
+      <h2>Fase 1: Intake en positionering</h2>
+      <p>Vraag elke creator op:</p>
+      <ul>
+        <li>Leeftijd en identiteitsverificatie</li>
+        <li>Hoofdtaal (NL, FR of beide)</li>
+        <li>Doelregio (Vlaanderen, Wallonië, Nederland, Frankrijk, internationaal)</li>
+        <li>Niche (fitness, cosplay, lifestyle, humor, etc.)</li>
+        <li>Persona</li>
+        <li>Bestaande accounts, volgers, beste content, eerdere bans</li>
+        <li>Hoofdplatform: OnlyFans, MYM of Fansly</li>
+        <li>Contentgrenzen en privacywensen</li>
+      </ul>
+      <h3>Platformkeuze</h3>
+      <ul>
+        <li><strong>Vlaams/NL of internationaal</strong> → OnlyFans</li>
+        <li><strong>Franstalig België / Frankrijk</strong> → MYM</li>
+        <li><strong>Niche of tweede publiek</strong> → Fansly</li>
+      </ul>
+      <p>Start met maximaal één hoofdplatform. Voeg een tweede pas toe als de eerste funnel stabiel draait.</p>
+    </article>
+
+    <article class="phase">
+      <h2>Fase 2: Website / linkhub bouwen</h2>
+      <p>Doel: bezoeker binnen 5 seconden naar de juiste bestemming sturen.</p>
+      <h3>Structuur</h3>
+      <div class="script">domeinnaam.be
+├── /nl
+├── /fr
+├── /start
+├── /faq
+├── /privacy
+└── /voorwaarden</div>
+      <h3>Homepage-volgorde</h3>
+      <ol>
+        <li>Hero: naam, niche, regio + belofte + primaire knop</li>
+        <li>Trust: korte intro + 3-6 SFW visuals</li>
+        <li>Platformkeuze: één hoofdknop, eventueel secundair</li>
+        <li>E-mailcapture: gratis SFW leadmagnet</li>
+        <li>FAQ + compliance (18+, privacy, voorwaarden)</li>
+      </ol>
+      <div class="note">Geen expliciete content op de publieke pagina. Geen directe adult-links in TikTok-bio.</div>
+    </article>
+
+    <article class="phase">
+      <h2>Fase 3: Social accounts instellen</h2>
+      <h3>TikTok (discovery)</h3>
+      <ul>
+        <li>Volledig SFW, geen directe verwijzing naar adult platforms</li>
+        <li>Link: website, niet OnlyFans/MYM/Fansly</li>
+        <li>Business/creator-account voor analytics</li>
+      </ul>
+      <div class="script">Vlaamse gym & lifestyle creator 🇧🇪
+Dagelijkse Reels, gym chaos & BTS
+Meer over mij 👇
+[website-link]</div>
+
+      <h3>Instagram (trust & conversie)</h3>
+      <ul>
+        <li>Creator/business account</li>
+        <li>Link in bio: website met UTM</li>
+        <li>Story highlights: Start hier, Over mij, FAQ, BTS</li>
+        <li>Minimaal 9-12 sterke posts vóór promotie</li>
+      </ul>
+      <div class="script">Vlaamse lifestyle & gym creator 🇧🇪
+Behind the scenes • dagelijkse updates
+Start hier 👇
+[website-link]</div>
+    </article>
+
+    <article class="phase">
+      <h2>Fase 4: UTM-tracking</h2>
+      <p>Altijd kleine letters, underscores, consistente namen.</p>
+      <ul>
+        <li><code>utm_source</code> — tiktok, instagram, email</li>
+        <li><code>utm_medium</code> — social, bio, story</li>
+        <li><code>utm_campaign</code> — launch_october</li>
+        <li><code>utm_content</code> — reel_outfit, story_poll</li>
+      </ul>
+      <h3>Voorbeelden</h3>
+      <div class="script">TikTok bio:
+https://domein.be/nl?utm_source=tiktok&utm_medium=bio&utm_campaign=launch&utm_content=tiktok_bio
+
+Instagram bio:
+https://domein.be/nl?utm_source=instagram&utm_medium=bio&utm_campaign=launch&utm_content=ig_bio
+
+Website → OnlyFans:
+https://onlyfans.com/naam?utm_source=website&utm_medium=cta&utm_campaign=launch&utm_content=hero_of</div>
+    </article>
+
+    <article class="phase">
+      <h2>Fase 5: Eerste 30 dagen</h2>
+      <ul>
+        <li>Week 1: social setup + website live + 5-7 SFW posts</li>
+        <li>Week 2: dagelijkse TikTok + 3-4 Instagram Reels</li>
+        <li>Week 3: UTM-analyse, beste formats opschalen</li>
+        <li>Week 4: rapportage + optimalisatie</li>
+      </ul>
+    </article>
+
+    <p style="margin-top:32px;color:var(--muted);font-size:.9rem;">Bron: Perplexity research · Alleen voor intern gebruik</p>
+  </div>
+</div>
+
+<script>
+const PIN = '6969';
+const pinInput = document.getElementById('pin');
+const unlock = document.getElementById('unlock');
+const err = document.getElementById('err');
+const gate = document.getElementById('gate');
+const content = document.getElementById('content');
+
+function tryUnlock() {
+  if (pinInput.value === PIN) {
+    gate.style.display = 'none';
+    content.classList.add('visible');
+    sessionStorage.setItem('accms-consult', 'ok');
+  } else {
+    err.style.display = 'block';
+    pinInput.value = '';
+    pinInput.focus();
+  }
+}
+unlock.addEventListener('click', tryUnlock);
+pinInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+
+if (sessionStorage.getItem('accms-consult') === 'ok') {
+  gate.style.display = 'none';
+  content.classList.add('visible');
+}
+</script>
+</body>
+</html>
