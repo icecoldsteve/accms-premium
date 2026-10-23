@@ -273,3 +273,28 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 })();
+
+// Force hero video play on mobile Chrome (Android + iOS)
+document.addEventListener('DOMContentLoaded', function () {
+  var videos = document.querySelectorAll('.hero-video');
+  videos.forEach(function (video) {
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    var play = function () {
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+    play();
+    video.addEventListener('loadeddata', play);
+    // Fallback: play on first touch/click
+    var once = function () {
+      play();
+      document.removeEventListener('touchstart', once);
+      document.removeEventListener('click', once);
+    };
+    document.addEventListener('touchstart', once, { once: true, passive: true });
+    document.addEventListener('click', once, { once: true });
+  });
+});
