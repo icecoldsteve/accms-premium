@@ -15,9 +15,9 @@ EMAIL = "info@accms.agency"
 COMPANY = dict(name="SMSAK", owner="SMSAK", street="Bosheide 9", postal="8660", city="De Panne",
                kbo="1035.506.672", vat="BE 1035.506.672")
 LEGAL = {
-    "nl": f"ACCMS is een handelsnaam van {COMPANY['name']} ({COMPANY['owner']}) · {COMPANY['street']}, {COMPANY['postal']} {COMPANY['city']} · KBO {COMPANY['kbo']} · btw {COMPANY['vat']}",
-    "fr": f"ACCMS est une dénomination commerciale de {COMPANY['name']} ({COMPANY['owner']}) · {COMPANY['street']}, {COMPANY['postal']} {COMPANY['city']} · BCE {COMPANY['kbo']} · TVA {COMPANY['vat']}",
-    "en": f"ACCMS is a trading name of {COMPANY['name']} ({COMPANY['owner']}) · {COMPANY['street']}, {COMPANY['postal']} {COMPANY['city']}, Belgium · Company no. {COMPANY['kbo']} · VAT {COMPANY['vat']}",
+    "nl": f"ACCMS is een handelsnaam van {COMPANY['name']} ({COMPANY['owner']}) · {COMPANY['street']}, {COMPANY['postal']} {COMPANY['city']} · KBO {COMPANY['kbo']}",
+    "fr": f"ACCMS est une dénomination commerciale de {COMPANY['name']} ({COMPANY['owner']}) · {COMPANY['street']}, {COMPANY['postal']} {COMPANY['city']} · BCE {COMPANY['kbo']}",
+    "en": f"ACCMS is a trading name of {COMPANY['name']} ({COMPANY['owner']}) · {COMPANY['street']}, {COMPANY['postal']} {COMPANY['city']}, Belgium · Company no. {COMPANY['kbo']}",
 }
 PRIVACY_LABEL = {"nl": "Privacyverklaring", "fr": "Politique de confidentialité", "en": "Privacy policy"}
 LANGS = ["nl", "fr", "en"]
