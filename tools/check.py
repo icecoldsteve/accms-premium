@@ -133,6 +133,11 @@ with sync_playwright() as pw:
                 pg.on("pageerror", lambda e: errs.append(str(e)))
                 pg.goto("http://127.0.0.1:8765" + path, wait_until="networkidle")
                 pg.wait_for_timeout(1300)
+                # scroll door de pagina zodat alle reveals afgaan
+                pg.evaluate("""async () => { for (let y = 0; y < document.body.scrollHeight; y += 400) { window.scrollTo({ top: y, behavior: 'instant' }); await new Promise(r => setTimeout(r, 80)); } window.scrollTo({ top: 0, behavior: 'instant' }); }""")
+                pg.wait_for_timeout(1800)
+                hidden = pg.evaluate("[...document.querySelectorAll('[data-reveal]')].filter(e => getComputedStyle(e).opacity !== '1').length")
+                check(f"[{lang}/{scheme}/{tag}] alle reveals zichtbaar na scrollen", hidden == 0, str(hidden))
                 over = pg.evaluate("document.documentElement.scrollWidth - window.innerWidth")
                 fonts = pg.evaluate("[...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family).join(',')")
                 csp = [e for e in errs if "Content Security Policy" in e or "Refused" in e]
@@ -145,13 +150,34 @@ with sync_playwright() as pw:
                 if lang == "nl" and scheme == "dark" and tag == "desktop":
                     pg.fill("#calc-subs", "500")
                     pg.dispatch_event("#calc-subs", "input")
+                    pg.wait_for_timeout(700)
+                    check("[nl] hero-canvas tekent deeltjes", pg.evaluate("(() => { const c = document.querySelector('.hero-canvas'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let n = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 0) n++; return n; })()") > 200)
                     check("[nl] calculator rekent (500 × €18 × 0,8 = € 7.200)", pg.inner_text("#calc-monthly").replace(" ", " ") == "€ 7.200", pg.inner_text("#calc-monthly"))
                     pg.click("#theme-toggle")
+                    pg.wait_for_timeout(1000)
                     check("[nl] toggle zet data-theme=light", pg.evaluate("document.documentElement.dataset.theme") == "light")
                     pg.reload(wait_until="networkidle")
                     check("[nl] thema blijft bewaard na herladen", pg.evaluate("document.documentElement.dataset.theme") == "light")
                 ctx.close()
+    # prefers-reduced-motion: niets mag verborgen zijn of bewegen
+    ctx = b.new_context(viewport={"width": 1440, "height": 900}, reduced_motion="reduce")
+    pg = ctx.new_page()
+    pg.goto("http://127.0.0.1:8765/", wait_until="networkidle")
+    pg.wait_for_timeout(800)
+    check("[reduced-motion] geen verborgen inhoud", pg.evaluate("[...document.querySelectorAll('[data-reveal]')].every(e => getComputedStyle(e).opacity === '1')"))
+    check("[reduced-motion] geen lopende animaties", pg.evaluate("document.getAnimations().filter(a => a.playState === 'running').length") == 0,
+          str(pg.evaluate("document.getAnimations().filter(a => a.playState === 'running').map(a => a.animationName || a.constructor.name).join(',')")))
+    check("[reduced-motion] canvas verborgen", pg.evaluate("getComputedStyle(document.querySelector('.hero-canvas')).display") == "none")
+    ctx.close()
     b.close()
+
+# zonder JavaScript: de verborgen beginstand mag enkel onder .motion (door JS gezet) bestaan
+css_txt = (SITE / "css/site.css").read_text()
+hide_rules = re.findall(r"([^{}]*\[data-reveal\][^{}]*)\{[^}]*opacity:\s*0", css_txt)
+check("[zonder JS] reveal-verberging alleen via .motion", bool(hide_rules) and all(".motion" in r for r in hide_rules), " | ".join(r.strip() for r in hide_rules))
+kf = re.findall(r"@keyframes\s+([\w-]+)\s*\{((?:[^{}]*\{[^{}]*\})+)\s*\}", css_txt)
+bad = [n for n, body in kf if re.search(r"(?<![\w-])(top|left|right|bottom|width|height|margin[\w-]*|padding[\w-]*)\s*:", body)]
+check(f"motion: {len(kf)} keyframes, alleen transform/opacity/rotate/scale/background-position", len(kf) >= 8 and not bad, ",".join(bad))
 srv.shutdown()
 
 passed = sum(1 for r in results if r[0])

@@ -65,7 +65,7 @@ def schema(lang):
          "alternateName": "Adult Content Creator Management Services",
          "url": DOMAIN + "/", "logo": DOMAIN + "/assets/icon-512.png", "image": DOMAIN + "/assets/og-image.png",
          "description": t["lead"], "email": EMAIL, "priceRange": "€199–€599",
-         "areaServed": [{"@type": "Country", "name": "Belgium"}, {"@type": "Country", "name": "Netherlands"}],
+         "areaServed": {"@type": "Country", "name": "Belgium"},
          "knowsLanguage": ["nl", "fr", "en"],
          "knowsAbout": ["Instagram", "TikTok", "OnlyFans", "Fansly", "MYM", "creator monetization", "link-in-bio websites"],
          "hasOfferCatalog": {"@type": "OfferCatalog", "name": t["price_label"], "itemListElement": offers}},
@@ -118,6 +118,7 @@ def head(lang, prefix):
 <link rel="stylesheet" href="{prefix}css/site.css">
 <script src="{prefix}js/theme.js"></script>
 <script src="{prefix}js/main.js" defer></script>
+<script src="{prefix}js/motion.js" defer></script>
 <script type="application/ld+json">
 {schema(lang)}
 </script>"""
@@ -164,12 +165,12 @@ def body(lang, prefix, preview):
         return "".join(f'<li class="node n{i}"><span>{icon(p)}{p}</span></li>' for i, p in enumerate(items))
 
     usp = "".join(f"<li>{u}</li>" for u in t["usp"])
-    services = "".join(f'<div class="col"><h3>{a}</h3><p>{b}</p></div>' for a, b in t["services"])
-    funnel = "".join(f'<div><span class="step">{s}</span><h3>{h}</h3><p>{p}</p></div>' for s, h, p in t["funnel"])
+    services = "".join(f'<div class="col" data-reveal><h3>{a}</h3><p>{b}</p></div>' for a, b in t["services"])
+    funnel = "".join(f'<div data-reveal><span class="step">{s}</span><h3>{h}</h3><p>{p}</p></div>' for s, h, p in t["funnel"])
     cards = ""
     for name, kind, badge, bullets, kword, kval, core in t["road"]:
         lis = "".join(f"<li>{b}</li>" for b in bullets)
-        cards += (f'<article class="card{" core" if core else ""}"><div class="card-top"><h3>{name}</h3>'
+        cards += (f'<article data-reveal class="card{" core" if core else ""}"><div class="card-top"><h3>{name}</h3>'
                   f'<span class="badge {kind}">{badge}</span></div><ul>{lis}</ul>'
                   f'<p class="kpi"><strong>{kword}</strong> · {kval}</p></article>')
     timeline = "".join(f'<li><span class="when">{w}</span><p>{x}</p></li>' for w, x in t["timeline"])
@@ -179,21 +180,22 @@ def body(lang, prefix, preview):
         fields += (f'<div class="field"><label for="calc-{fid}"><span>{label}</span>'
                    f'<output id="out-{fid}" for="calc-{fid}">{shown}</output></label>'
                    f'<input id="calc-{fid}" type="range" min="{mn}" max="{mx}" step="{st}" value="{val}"></div>')
-    steps = "".join(f"<li><h3>{a}</h3><p>{b}</p></li>" for a, b in t["process"])
+    steps = "".join(f"<li data-reveal><h3>{a}</h3><p>{b}</p></li>" for a, b in t["process"])
     plans = ""
     for p in t["plans"]:
         lis = "".join(f"<li>{i}</li>" for i in p["items"])
         flag = f'<span class="badge hi flag">{t["featured"]}</span>' if p["featured"] else ""
         note = f'<p class="note">{p["note"]}</p>' if p["note"] else ""
         btn = "btn-primary" if p["featured"] else "btn-ghost"
-        plans += (f'<article class="plan{" featured" if p["featured"] else ""}">{flag}<h3>{p["name"]}</h3>'
+        plans += (f'<article data-reveal class="plan{" featured" if p["featured"] else ""}">{flag}<h3>{p["name"]}</h3>'
                   f'<p class="price">{p["price"]}<small>{p["unit"]}</small></p>{note}<ul>{lis}</ul>'
                   f'<a class="btn {btn}" href="#contact">{p["cta"]}</a></article>')
-    trust = "".join(f"<div><h3>{a}</h3><p>{b}</p></div>" for a, b in t["trust"])
+    trust = "".join(f"<div data-reveal><h3>{a}</h3><p>{b}</p></div>" for a, b in t["trust"])
     faq = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in t["faq"])
     mailto = f"mailto:{EMAIL}?subject=ACCMS%20intake"
 
-    return f"""<a class="skip" href="#main">{t["skip"]}</a>
+    return f"""<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">{t["skip"]}</a>
 <header class="site-header">
 <div class="wrap header-row">
 <a class="brand" href="{lang_href(lang, lang, preview)}" aria-label="ACCMS">
@@ -211,6 +213,7 @@ def body(lang, prefix, preview):
 
 <main id="main">
 <section class="hero">
+<canvas class="hero-canvas" aria-hidden="true"></canvas>
 <div class="wrap hero-grid">
 <div class="hero-copy">
 <p class="label fade-in">{t["eyebrow"]}</p>
@@ -222,49 +225,50 @@ def body(lang, prefix, preview):
 </div>
 <figure class="hero-visual" role="img" aria-label="{t["orbit_label"]}">
 <div class="orbit">
+<div class="comet" aria-hidden="true"></div>
 <ul class="ring" aria-hidden="true">{nodes(PLATFORMS_REVENUE, -45)}</ul>
 <ul class="ring inner" aria-hidden="true">{nodes(PLATFORMS_REACH, 0)}</ul>
-<div class="orbit-core"><img src="{prefix}assets/icon.svg" alt="" width="120" height="120"></div>
+<div class="orbit-core"><span class="pulse" aria-hidden="true"></span><span class="pulse p2" aria-hidden="true"></span><img src="{prefix}assets/icon.svg" alt="" width="120" height="120"></div>
 </div>
 <figcaption class="orbit-legend" aria-hidden="true"><span class="reach">{t["legend_reach"]}</span><span>{t["legend_rev"]}</span></figcaption>
 </figure>
 </div>
 </section>
 
-<div class="usp"><div class="wrap"><ul>{usp}</ul></div></div>
+<div class="usp"><div class="track"><ul>{usp}</ul><ul aria-hidden="true">{usp}</ul></div></div>
 
 <section class="section" id="services" aria-labelledby="h-services">
 <div class="wrap">
-<div class="section-head"><p class="label">{t["services_label"]}</p><h2 id="h-services">{t["services_h2"]}</h2></div>
+<div class="section-head" data-reveal><p class="label">{t["services_label"]}</p><h2 id="h-services">{t["services_h2"]}</h2></div>
 <div class="cols-4">{services}</div>
 </div>
 </section>
 
 <section class="section band" aria-labelledby="h-funnel">
 <div class="wrap">
-<div class="section-head"><p class="label">{t["funnel_label"]}</p><h2 id="h-funnel">{t["funnel_h2"]}</h2></div>
+<div class="section-head" data-reveal><p class="label">{t["funnel_label"]}</p><h2 id="h-funnel">{t["funnel_h2"]}</h2></div>
 <div class="funnel">{funnel}</div>
 </div>
 </section>
 
 <section class="section" id="roadmap" aria-labelledby="h-roadmap">
 <div class="wrap">
-<div class="section-head"><p class="label">{t["road_label"]}</p><h2 id="h-roadmap">{t["road_h2"]}</h2><p>{t["road_intro"]}</p></div>
+<div class="section-head" data-reveal><p class="label">{t["road_label"]}</p><h2 id="h-roadmap">{t["road_h2"]}</h2><p>{t["road_intro"]}</p></div>
 <div class="cards">{cards}</div>
 </div>
 </section>
 
 <section class="section band" aria-labelledby="h-timeline">
 <div class="wrap">
-<div class="section-head"><p class="label">{t["time_label"]}</p><h2 id="h-timeline">{t["time_h2"]}</h2></div>
-<ol class="timeline">{timeline}</ol>
+<div class="section-head" data-reveal><p class="label">{t["time_label"]}</p><h2 id="h-timeline">{t["time_h2"]}</h2></div>
+<ol class="timeline" data-reveal>{timeline}</ol>
 </div>
 </section>
 
 <section class="section" id="forecast" aria-labelledby="h-forecast">
 <div class="wrap">
-<div class="section-head"><p class="label">{t["calc_label"]}</p><h2 id="h-forecast">{t["calc_h2"]}</h2><p>{t["calc_intro"]}</p></div>
-<div class="calc">
+<div class="section-head" data-reveal><p class="label">{t["calc_label"]}</p><h2 id="h-forecast">{t["calc_h2"]}</h2><p>{t["calc_intro"]}</p></div>
+<div class="calc" data-reveal>
 <div class="calc-inputs">{fields}</div>
 <div class="calc-result" aria-live="polite">
 <span class="label">{t["calc_month"]}</span>
@@ -274,35 +278,35 @@ def body(lang, prefix, preview):
 <small>{t["calc_note"]}</small>
 </div>
 </div>
-<div class="cta-strip"><p>{t["strip_text"]}</p><a class="btn btn-primary" href="#contact">{t["strip_cta"]}</a></div>
+<div class="cta-strip" data-reveal><p>{t["strip_text"]}</p><a class="btn btn-primary" href="#contact">{t["strip_cta"]}</a></div>
 </div>
 </section>
 
 <section class="section band" id="process" aria-labelledby="h-process">
 <div class="wrap">
-<div class="section-head"><p class="label">{t["proc_label"]}</p><h2 id="h-process">{t["proc_h2"]}</h2></div>
+<div class="section-head" data-reveal><p class="label">{t["proc_label"]}</p><h2 id="h-process">{t["proc_h2"]}</h2></div>
 <ol class="steps">{steps}</ol>
 </div>
 </section>
 
 <section class="section" id="pricing" aria-labelledby="h-pricing">
 <div class="wrap">
-<div class="section-head"><p class="label">{t["price_label"]}</p><h2 id="h-pricing">{t["price_h2"]}</h2></div>
+<div class="section-head" data-reveal><p class="label">{t["price_label"]}</p><h2 id="h-pricing">{t["price_h2"]}</h2></div>
 <div class="plans">{plans}</div>
 </div>
 </section>
 
 <section class="section band" aria-labelledby="h-trust">
 <div class="wrap">
-<div class="section-head"><p class="label">{t["trust_label"]}</p><h2 id="h-trust">{t["trust_h2"]}</h2></div>
+<div class="section-head" data-reveal><p class="label">{t["trust_label"]}</p><h2 id="h-trust">{t["trust_h2"]}</h2></div>
 <div class="trust">{trust}</div>
 </div>
 </section>
 
 <section class="section" id="faq" aria-labelledby="h-faq">
 <div class="wrap faq">
-<div class="section-head"><p class="label">{t["faq_label"]}</p><h2 id="h-faq">{t["faq_h2"]}</h2></div>
-<div class="faq-list">{faq}</div>
+<div class="section-head" data-reveal><p class="label">{t["faq_label"]}</p><h2 id="h-faq">{t["faq_h2"]}</h2></div>
+<div class="faq-list" data-reveal>{faq}</div>
 </div>
 </section>
 
@@ -343,7 +347,7 @@ def page(lang, preview):
         # Artifact page: the host wraps it in its own skeleton
         return (f'<title>ACCMS</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'
                 f'<link rel="stylesheet" href="css/site.css">\n<script src="js/theme.js"></script>\n'
-                f'<script src="js/main.js" defer></script>\n'
+                f'<script src="js/main.js" defer></script>\n<script src="js/motion.js" defer></script>\n'
                 f'<div class="page" data-locale-host="{t["locale"]}">\n{b}\n</div>\n')
     return (f'<!doctype html>\n<html lang="{t["html_lang"]}" data-locale="{t["locale"]}">\n<head>\n{head(lang, prefix)}\n</head>\n'
             f'<body>\n{b}\n</body>\n</html>\n')
@@ -493,7 +497,7 @@ nl = T["nl"]
 faq_md = "\n".join(f"- **{q}** {a}" for q, a in T["en"]["faq"])
 write(SITE / "llms.txt", f"""# ACCMS
 
-> ACCMS (Adult Content Creator Management Services) is a Belgian service that helps adult (18+) content creators in Belgium and the Netherlands grow on Instagram, TikTok, X, OnlyFans, Fansly, MYM and F2F. Creators keep their own accounts, passwords and revenue; ACCMS delivers strategy, a 90-day roadmap, a revenue forecast and technical support. No revenue share of 50%: fixed prices.
+> ACCMS (Adult Content Creator Management Services) is a Belgian service that helps adult (18+) content creators in Belgium grow on Instagram, TikTok, X, OnlyFans, Fansly, MYM and F2F. Creators keep their own accounts, passwords and revenue; ACCMS delivers strategy, a 90-day roadmap, a revenue forecast and technical support. No revenue share of 50%: fixed prices.
 
 ## Pages
 - [Nederlands]({DOMAIN}/): main site in Dutch

@@ -30,6 +30,13 @@
   --step-3: clamp(2.1rem, 4.2vw, 3.4rem);
   --step-4: clamp(2.7rem, 6.4vw, 5.25rem);
   --radius: 14px;
+  /* Motion tokens (motion-anti-slop): expressive curves, used sparingly */
+  --dur-fast-01: 70ms; --dur-fast-02: 110ms;
+  --dur-moderate-01: 150ms; --dur-moderate-02: 240ms;
+  --dur-slow-01: 400ms; --dur-slow-02: 700ms;
+  --ease-standard: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --ease-entrance: cubic-bezier(0, 0, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0.14, 1, 1);
   --gutter: max(16px, env(safe-area-inset-left, 0px));
   --gutter-r: max(16px, env(safe-area-inset-right, 0px));
   color-scheme: dark;
@@ -79,7 +86,7 @@ em.serif, h1 em, h2 em { font-family: var(--font-accent); font-style: italic; fo
 .skip:focus { left: 16px; top: 16px; z-index: 50; background: var(--accent); color: var(--on-accent); padding: 10px 14px; border-radius: 8px; }
 
 /* Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 24px; border-radius: 999px; font-family: var(--font-display); font-weight: 650; font-size: 1.0625rem; text-decoration: none; border: 2px solid var(--accent); transition: transform .2s ease, background-color .2s ease, color .2s ease; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 24px; border-radius: 999px; font-family: var(--font-display); font-weight: 650; font-size: 1.0625rem; text-decoration: none; border: 2px solid var(--accent); transition: transform var(--dur-moderate-01) var(--ease-standard), background-color var(--dur-moderate-02) var(--ease-standard), color var(--dur-moderate-02) var(--ease-standard); }
 .btn-primary { background: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { color: var(--on-accent); transform: translateY(-2px); }
 .btn-ghost { background: transparent; color: var(--accent-ink); }
@@ -209,12 +216,14 @@ em.serif, h1 em, h2 em { font-family: var(--font-accent); font-style: italic; fo
 /* Pricing */
 .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
 .plan { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
-.plan.featured { border: 2px solid var(--accent); }
+.plan.featured { position: relative; isolation: isolate; overflow: hidden; border-color: transparent; }
+.plan.featured::before { content: ""; position: absolute; inset: -60%; z-index: -2; background: conic-gradient(from 0deg, var(--line) 0 62%, var(--accent) 80%, #FFE3A6 86%, var(--accent) 92%, var(--line) 100%); animation: spin 7s linear infinite; }
+.plan.featured::after { content: ""; position: absolute; inset: 2px; z-index: -1; border-radius: 18px; background: var(--card); }
 .plan .flag { align-self: flex-start; }
 .price { font-family: var(--font-display); font-weight: 750; font-size: clamp(2rem, 3.6vw, 2.6rem); letter-spacing: -.03em; line-height: 1.05; color: var(--accent-ink); }
 .price small { display: block; font-family: var(--font-body); font-weight: 500; font-size: .9375rem; letter-spacing: 0; color: var(--muted); margin-top: 6px; }
 .plan .note { font-size: .9375rem; color: var(--muted); }
-.plan ul { margin: 0; padding-left: 20px; color: var(--muted); display: grid; gap: 6px; flex: 1; }
+.plan ul { margin: 0; padding-left: 20px; color: var(--muted); display: grid; gap: 6px; flex: 1; align-content: start; }
 .plan .btn { width: 100%; }
 
 /* Trust */
@@ -228,7 +237,7 @@ em.serif, h1 em, h2 em { font-family: var(--font-accent); font-style: italic; fo
 .faq details { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding-inline: 24px; }
 .faq summary { cursor: pointer; list-style: none; padding-block: 20px; font-family: var(--font-display); font-weight: 650; font-size: var(--step-1); display: flex; justify-content: space-between; gap: 16px; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; color: var(--accent-ink); font-weight: 400; font-size: 1.6rem; line-height: 1; transition: rotate .2s ease; }
+.faq summary::after { content: "+"; color: var(--accent-ink); font-weight: 400; font-size: 1.6rem; line-height: 1; transition: rotate var(--dur-moderate-02) var(--ease-standard); }
 .faq details[open] summary::after { rotate: 45deg; }
 .faq details p { padding-bottom: 20px; color: var(--muted); max-width: 65ch; }
 
@@ -247,6 +256,97 @@ em.serif, h1 em, h2 em { font-family: var(--font-accent); font-style: italic; fo
 .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: .9375rem; color: var(--muted); }
 .footer-row img { height: 56px; width: auto; }
 .footer-meta { display: grid; gap: 4px; }
+
+/* ===== Motion & visuals ===== */
+
+/* Grain: één vaste laag, uit op mobiel */
+body::after { content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) body::after { opacity: .03; } }
+:root[data-theme="light"] body::after { opacity: .03; }
+
+/* Scroll-voortgang: alleen waar scroll-timelines bestaan */
+.progress { display: none; }
+@supports (animation-timeline: scroll()) {
+  .progress { display: block; position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 2px; z-index: 40; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); animation: grow linear both; animation-timeline: scroll(root); }
+}
+@keyframes grow { to { transform: scaleX(1); } }
+
+/* Hero: deeltjes die naar het centrum stromen (volgers → fans) */
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.hero-grid { position: relative; z-index: 1; }
+.orbit { transform: translate3d(var(--px, 0px), var(--py, 0px), 0); transition: transform var(--dur-slow-02) var(--ease-standard); }
+.comet { position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  background: conic-gradient(from 0deg, transparent 0 80%, color-mix(in srgb, var(--accent) 55%, transparent) 95%, var(--accent) 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px));
+  animation: spin 9s linear infinite; }
+.orbit-core .pulse { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid var(--accent); opacity: 0; animation: ripple 3.6s var(--ease-entrance) infinite; }
+.orbit-core .pulse.p2 { animation-delay: 1.8s; }
+.orbit-core img { position: relative; }
+@keyframes ripple { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2.3); opacity: 0; } }
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .hero h1 em { background: linear-gradient(100deg, var(--accent-ink) 42%, #FFE9B8 50%, var(--accent-ink) 58%); background-size: 260% 100%; background-position: 100% 0;
+    -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 2.2s var(--ease-standard) 1.1s 1 both; }
+}
+@keyframes shimmer { to { background-position: 0 0; } }
+
+/* Kernpunten als doorlopende band */
+.usp { overflow: hidden; -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.usp .track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.usp .track ul { flex-wrap: nowrap; justify-content: flex-start; padding-right: 32px; }
+.usp:hover .track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Funnel: lichtpuls die van stap 1 naar 3 loopt */
+.funnel { position: relative; }
+.funnel::after { content: ""; position: absolute; left: 0; top: 0; width: 28%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: flow 4.8s var(--ease-standard) infinite; }
+@keyframes flow { from { transform: translateX(-100%); } to { transform: translateX(360%); } }
+
+/* Roadmap-kaarten: spotlight die de cursor volgt */
+.card { position: relative; overflow: hidden; transition: transform var(--dur-moderate-02) var(--ease-standard), border-color var(--dur-moderate-02) var(--ease-standard); }
+.card > * { position: relative; }
+.card::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity var(--dur-moderate-02) var(--ease-standard);
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%); }
+@media (hover: hover) and (pointer: fine) {
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .card:hover::before { opacity: 1; }
+}
+
+/* Tijdlijn: gouden lijn die zich uittekent */
+.timeline { position: relative; padding-top: 22px; }
+.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 20%, transparent)); transform-origin: 0 50%; transition: transform calc(var(--dur-slow-02) * 2) var(--ease-entrance) .2s; }
+.motion .timeline:not(.in)::before { transform: scaleX(0); }
+
+/* CTA's: lichtstreep bij hover */
+.btn-primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn-primary::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%); transform: translateX(-120%); }
+@media (hover: hover) { .btn-primary:hover::after { transform: translateX(120%); transition: transform var(--dur-slow-02) var(--ease-standard); } }
+
+/* Calculator: kort oplichten bij een nieuwe waarde */
+.calc-result { position: relative; overflow: hidden; }
+.calc-result::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%); transition: opacity var(--dur-slow-01) var(--ease-standard); }
+.calc-result.flash::after { opacity: 1; transition-duration: var(--dur-fast-02); }
+
+/* Scroll-reveals (alleen actief als JS ze aanzet; zonder JS blijft alles zichtbaar) */
+[data-reveal] { transition: opacity var(--dur-slow-02) var(--ease-entrance) var(--stagger, 0ms), transform var(--dur-slow-02) var(--ease-entrance) var(--stagger, 0ms); }
+.motion [data-reveal]:not(.in) { opacity: 0; transform: translateY(28px); }
+.motion .card[data-reveal]:not(.in), .motion .plan[data-reveal]:not(.in) { transform: translateY(36px) scale(.97); }
+
+/* FAQ vloeiend open */
+@supports (interpolate-size: allow-keywords) {
+  .faq-list { interpolate-size: allow-keywords; }
+  .faq details::details-content { block-size: 0; overflow: hidden; transition: block-size var(--dur-moderate-02) var(--ease-standard), content-visibility var(--dur-moderate-02) allow-discrete; }
+  .faq details[open]::details-content { block-size: auto; }
+}
+
+/* Taalwissel: zachte overgang tussen pagina's; thema-wissel: cirkel vanuit de knop */
+@view-transition { navigation: auto; }
+html.vt-theme::view-transition-old(root), html.vt-theme::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+.theme-toggle svg { transition: transform var(--dur-slow-01) var(--ease-standard); }
+.theme-toggle:active svg { transform: rotate(-30deg) scale(.9); }
+
+@media (max-width: 768px) { body::after { display: none; } }
 
 /* Legal pages */
 .legal h1 { font-size: var(--step-3); }
@@ -281,4 +381,8 @@ em.serif, h1 em, h2 em { font-family: var(--font-accent); font-style: italic; fo
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
+  .usp .track { width: auto; flex-wrap: wrap; justify-content: center; }
+  .usp ul[aria-hidden="true"], .comet, .orbit-core .pulse, .progress, .hero-canvas { display: none; }
+  .hero h1 em { color: var(--accent-ink); background: none; }
+  .motion [data-reveal]:not(.in) { opacity: 1; transform: none; }
 }

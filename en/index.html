@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="../css/site.css">
 <script src="../js/theme.js"></script>
 <script src="../js/main.js" defer></script>
+<script src="../js/motion.js" defer></script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -67,16 +68,10 @@
    "description": "ACCMS (Adult Content Creator Management Services) helps adult content creators grow on Instagram, TikTok, OnlyFans, Fansly and MYM. You get a plan per platform, a revenue forecast, a 90-day roadmap and technical support.",
    "email": "info@accms.agency",
    "priceRange": "€199–€599",
-   "areaServed": [
-    {
-     "@type": "Country",
-     "name": "Belgium"
-    },
-    {
-     "@type": "Country",
-     "name": "Netherlands"
-    }
-   ],
+   "areaServed": {
+    "@type": "Country",
+    "name": "Belgium"
+   },
    "knowsLanguage": [
     "nl",
     "fr",
@@ -235,6 +230,7 @@
 </script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap header-row">
@@ -253,9 +249,10 @@
 
 <main id="main">
 <section class="hero">
+<canvas class="hero-canvas" aria-hidden="true"></canvas>
 <div class="wrap hero-grid">
 <div class="hero-copy">
-<p class="label fade-in">For 18+ creators in Belgium and the Netherlands</p>
+<p class="label fade-in">For 18+ creators in Belgium</p>
 <h1><span class="line"><span class="d0">From followers</span></span><span class="line"><span class="d1">to <em>paying</em></span></span><span class="line"><span class="d2"><em>fans.</em></span></span></h1>
 <p class="lead fade-in">ACCMS (Adult Content Creator Management Services) helps adult content creators grow on Instagram, TikTok, OnlyFans, Fansly and MYM. You get a plan per platform, a revenue forecast, a 90-day roadmap and technical support.</p>
 <p class="promise fade-in">You keep your accounts, your passwords and your revenue. We deliver the plan and the tech.</p>
@@ -264,49 +261,50 @@
 </div>
 <figure class="hero-visual" role="img" aria-label="Diagram: Instagram, TikTok, X and YouTube Shorts bring reach; OnlyFans, Fansly, MYM and F2F bring revenue.">
 <div class="orbit">
+<div class="comet" aria-hidden="true"></div>
 <ul class="ring" aria-hidden="true"><li class="node n0"><span>OnlyFans</span></li><li class="node n1"><span>Fansly</span></li><li class="node n2"><span>MYM</span></li><li class="node n3"><span>F2F</span></li></ul>
 <ul class="ring inner" aria-hidden="true"><li class="node n0"><span><svg class="pf-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>Instagram</span></li><li class="node n1"><span><svg class="pf-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>TikTok</span></li><li class="node n2"><span><svg class="pf-icon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>X</span></li><li class="node n3"><span><svg class="pf-icon" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>YouTube Shorts</span></li></ul>
-<div class="orbit-core"><img src="../assets/icon.svg" alt="" width="120" height="120"></div>
+<div class="orbit-core"><span class="pulse" aria-hidden="true"></span><span class="pulse p2" aria-hidden="true"></span><img src="../assets/icon.svg" alt="" width="120" height="120"></div>
 </div>
 <figcaption class="orbit-legend" aria-hidden="true"><span class="reach">Inner ring: reach</span><span>Outer ring: revenue</span></figcaption>
 </figure>
 </div>
 </section>
 
-<div class="usp"><div class="wrap"><ul><li>No 50% revenue cut</li><li>You keep your passwords</li><li>Fixed prices</li><li>Belgian and discreet</li><li>Reply within 48 hours</li></ul></div></div>
+<div class="usp"><div class="track"><ul><li>No 50% revenue cut</li><li>You keep your passwords</li><li>Fixed prices</li><li>Belgian and discreet</li><li>Reply within 48 hours</li></ul><ul aria-hidden="true"><li>No 50% revenue cut</li><li>You keep your passwords</li><li>Fixed prices</li><li>Belgian and discreet</li><li>Reply within 48 hours</li></ul></div></div>
 
 <section class="section" id="services" aria-labelledby="h-services">
 <div class="wrap">
-<div class="section-head"><p class="label">What you get</p><h2 id="h-services">Four parts, <em>one plan</em></h2></div>
-<div class="cols-4"><div class="col"><h3>Strategy per platform</h3><p>Instagram and TikTok for reach, X for traffic, OnlyFans, Fansly and MYM for revenue. With priorities, posting frequency and content focus per channel.</p></div><div class="col"><h3>Revenue forecast</h3><p>An estimate based on your numbers: subscribers, price, PPV, customs and tips. Always as a cautious, realistic and ambitious scenario.</p></div><div class="col"><h3>90-day roadmap</h3><p>Each phase tells you what to do, with KPIs we measure and adjust every month.</p></div><div class="col"><h3>Technical support</h3><p>Your own link-in-bio website on your own domain, email capture, click tracking and help with bios and settings.</p></div></div>
+<div class="section-head" data-reveal><p class="label">What you get</p><h2 id="h-services">Four parts, <em>one plan</em></h2></div>
+<div class="cols-4"><div class="col" data-reveal><h3>Strategy per platform</h3><p>Instagram and TikTok for reach, X for traffic, OnlyFans, Fansly and MYM for revenue. With priorities, posting frequency and content focus per channel.</p></div><div class="col" data-reveal><h3>Revenue forecast</h3><p>An estimate based on your numbers: subscribers, price, PPV, customs and tips. Always as a cautious, realistic and ambitious scenario.</p></div><div class="col" data-reveal><h3>90-day roadmap</h3><p>Each phase tells you what to do, with KPIs we measure and adjust every month.</p></div><div class="col" data-reveal><h3>Technical support</h3><p>Your own link-in-bio website on your own domain, email capture, click tracking and help with bios and settings.</p></div></div>
 </div>
 </section>
 
 <section class="section band" aria-labelledby="h-funnel">
 <div class="wrap">
-<div class="section-head"><p class="label">The funnel</p><h2 id="h-funnel">Every platform has <em>one job</em></h2></div>
-<div class="funnel"><div><span class="step">Step 1 · Discovery</span><h3>Instagram · TikTok · Shorts</h3><p>Platform-safe teasers, personality and a strong hook in the first 3 seconds.</p></div><div><span class="step">Step 2 · Traffic</span><h3>X · your own link-in-bio</h3><p>Direct links, community and your own landing page that measures every click.</p></div><div><span class="step">Step 3 · Revenue</span><h3>OnlyFans · Fansly · MYM · F2F</h3><p>Subscriptions, PPV bundles, a customs menu, tips and paid messages.</p></div></div>
+<div class="section-head" data-reveal><p class="label">The funnel</p><h2 id="h-funnel">Every platform has <em>one job</em></h2></div>
+<div class="funnel"><div data-reveal><span class="step">Step 1 · Discovery</span><h3>Instagram · TikTok · Shorts</h3><p>Platform-safe teasers, personality and a strong hook in the first 3 seconds.</p></div><div data-reveal><span class="step">Step 2 · Traffic</span><h3>X · your own link-in-bio</h3><p>Direct links, community and your own landing page that measures every click.</p></div><div data-reveal><span class="step">Step 3 · Revenue</span><h3>OnlyFans · Fansly · MYM · F2F</h3><p>Subscriptions, PPV bundles, a customs menu, tips and paid messages.</p></div></div>
 </div>
 </section>
 
 <section class="section" id="roadmap" aria-labelledby="h-roadmap">
 <div class="wrap">
-<div class="section-head"><p class="label">From a real client file · anonymised</p><h2 id="h-roadmap">This is what a <em>roadmap</em> looks like</h2><p>A Flemish creator, 90 days, platform by platform. Reach first via Instagram and TikTok, then revenue via OnlyFans and Fansly, then the secondary channels.</p></div>
-<div class="cards"><article class="card"><div class="card-top"><h3>Instagram</h3><span class="badge hi">High priority · day 1–30</span></div><ul><li>Bio and link-in-bio with one clear call-to-action</li><li>Daily 1 Reel + 1 carousel and 5–8 Stories</li><li>Trending audio, strong hooks, pin the best Reel</li><li>Belgian identity and behind-the-scenes as the common thread</li></ul><p class="kpi"><strong>KPI</strong> · +15–25% followers per month · link clicks · Story engagement</p></article><article class="card"><div class="card-top"><h3>TikTok</h3><span class="badge hi">High priority · day 1–30</span></div><ul><li>Claim or create the account</li><li>1–3 short clips a day, repurpose the best Reels</li><li>Personality, humour and visual hooks</li><li>Captions in Dutch and English</li></ul><p class="kpi"><strong>KPI</strong> · 2–3 viral clips · profile visits · link traffic</p></article><article class="card core"><div class="card-top"><h3>OnlyFans</h3><span class="badge core">Core revenue · day 1–45</span></div><ul><li>Bilingual bio (Dutch + English)</li><li>Test a price increase to €9.99–€12</li><li>Clear customs menu and weekly PPV bundles</li><li>4–5 posts a week, the occasional live session</li></ul><p class="kpi"><strong>KPI</strong> · subscriber growth · revenue per fan · customs volume</p></article><article class="card"><div class="card-top"><h3>Fansly</h3><span class="badge hi">High priority · day 15–60</span></div><ul><li>Set up the profile and mirror core content</li><li>Use Fansly's stronger discovery</li><li>Test different PPV pricing than on OnlyFans</li></ul><p class="kpi"><strong>KPI</strong> · second revenue stream · lower acquisition cost</p></article><article class="card"><div class="card-top"><h3>MYM</h3><span class="badge mid">Medium · day 20–60</span></div><ul><li>Strong in the Benelux: local-language content</li><li>Cross-promotion with local creators</li></ul><p class="kpi"><strong>Role</strong> · local audience, complements OnlyFans</p></article><article class="card"><div class="card-top"><h3>X · F2F · YouTube Shorts</h3><span class="badge mid">Supporting</span></div><ul><li>X: 3–5 posts a week with direct links</li><li>F2F: scheduled live sessions with higher tickets</li><li>Shorts: repurpose the best clips</li></ul><p class="kpi"><strong>Role</strong> · traffic, engagement, extra discovery</p></article><article class="card"><div class="card-top"><h3>Own website</h3><span class="badge mid">Medium · day 30–90</span></div><ul><li>One landing page with all your links, on your own domain</li><li>Newsletter and email capture</li><li>Replaces Linktree, Link.me or Beacons</li></ul><p class="kpi"><strong>Role</strong> · your traffic, better tracking</p></article></div>
+<div class="section-head" data-reveal><p class="label">From a real client file · anonymised</p><h2 id="h-roadmap">This is what a <em>roadmap</em> looks like</h2><p>A Flemish creator, 90 days, platform by platform. Reach first via Instagram and TikTok, then revenue via OnlyFans and Fansly, then the secondary channels.</p></div>
+<div class="cards"><article data-reveal class="card"><div class="card-top"><h3>Instagram</h3><span class="badge hi">High priority · day 1–30</span></div><ul><li>Bio and link-in-bio with one clear call-to-action</li><li>Daily 1 Reel + 1 carousel and 5–8 Stories</li><li>Trending audio, strong hooks, pin the best Reel</li><li>Belgian identity and behind-the-scenes as the common thread</li></ul><p class="kpi"><strong>KPI</strong> · +15–25% followers per month · link clicks · Story engagement</p></article><article data-reveal class="card"><div class="card-top"><h3>TikTok</h3><span class="badge hi">High priority · day 1–30</span></div><ul><li>Claim or create the account</li><li>1–3 short clips a day, repurpose the best Reels</li><li>Personality, humour and visual hooks</li><li>Captions in Dutch and English</li></ul><p class="kpi"><strong>KPI</strong> · 2–3 viral clips · profile visits · link traffic</p></article><article data-reveal class="card core"><div class="card-top"><h3>OnlyFans</h3><span class="badge core">Core revenue · day 1–45</span></div><ul><li>Bilingual bio (Dutch + English)</li><li>Test a price increase to €9.99–€12</li><li>Clear customs menu and weekly PPV bundles</li><li>4–5 posts a week, the occasional live session</li></ul><p class="kpi"><strong>KPI</strong> · subscriber growth · revenue per fan · customs volume</p></article><article data-reveal class="card"><div class="card-top"><h3>Fansly</h3><span class="badge hi">High priority · day 15–60</span></div><ul><li>Set up the profile and mirror core content</li><li>Use Fansly's stronger discovery</li><li>Test different PPV pricing than on OnlyFans</li></ul><p class="kpi"><strong>KPI</strong> · second revenue stream · lower acquisition cost</p></article><article data-reveal class="card"><div class="card-top"><h3>MYM</h3><span class="badge mid">Medium · day 20–60</span></div><ul><li>Strong in the Benelux: local-language content</li><li>Cross-promotion with local creators</li></ul><p class="kpi"><strong>Role</strong> · local audience, complements OnlyFans</p></article><article data-reveal class="card"><div class="card-top"><h3>X · F2F · YouTube Shorts</h3><span class="badge mid">Supporting</span></div><ul><li>X: 3–5 posts a week with direct links</li><li>F2F: scheduled live sessions with higher tickets</li><li>Shorts: repurpose the best clips</li></ul><p class="kpi"><strong>Role</strong> · traffic, engagement, extra discovery</p></article><article data-reveal class="card"><div class="card-top"><h3>Own website</h3><span class="badge mid">Medium · day 30–90</span></div><ul><li>One landing page with all your links, on your own domain</li><li>Newsletter and email capture</li><li>Replaces Linktree, Link.me or Beacons</li></ul><p class="kpi"><strong>Role</strong> · your traffic, better tracking</p></article></div>
 </div>
 </section>
 
 <section class="section band" aria-labelledby="h-timeline">
 <div class="wrap">
-<div class="section-head"><p class="label">Timeline</p><h2 id="h-timeline">90 days, <em>four phases</em></h2></div>
-<ol class="timeline"><li><span class="when">Days 1–30</span><p>Instagram and TikTok system live, OnlyFans optimised.</p></li><li><span class="when">Days 15–45</span><p>Fansly launched, customs menu active.</p></li><li><span class="when">Days 30–60</span><p>MYM and own website online.</p></li><li><span class="when">Days 60–90</span><p>Adjust on data, scale what works.</p></li></ol>
+<div class="section-head" data-reveal><p class="label">Timeline</p><h2 id="h-timeline">90 days, <em>four phases</em></h2></div>
+<ol class="timeline" data-reveal><li><span class="when">Days 1–30</span><p>Instagram and TikTok system live, OnlyFans optimised.</p></li><li><span class="when">Days 15–45</span><p>Fansly launched, customs menu active.</p></li><li><span class="when">Days 30–60</span><p>MYM and own website online.</p></li><li><span class="when">Days 60–90</span><p>Adjust on data, scale what works.</p></li></ol>
 </div>
 </section>
 
 <section class="section" id="forecast" aria-labelledby="h-forecast">
 <div class="wrap">
-<div class="section-head"><p class="label">Revenue forecast</p><h2 id="h-forecast">Run the <em>numbers</em></h2><p>A quick estimate with example values. In your client file we do this per platform, in three scenarios.</p></div>
-<div class="calc">
+<div class="section-head" data-reveal><p class="label">Revenue forecast</p><h2 id="h-forecast">Run the <em>numbers</em></h2><p>A quick estimate with example values. In your client file we do this per platform, in three scenarios.</p></div>
+<div class="calc" data-reveal>
 <div class="calc-inputs"><div class="field"><label for="calc-subs"><span>Paying subscribers</span><output id="out-subs" for="calc-subs">300</output></label><input id="calc-subs" type="range" min="10" max="3000" step="10" value="300"></div><div class="field"><label for="calc-price"><span>Subscription price per month</span><output id="out-price" for="calc-price">€10</output></label><input id="calc-price" type="range" min="3" max="30" step="1" value="10"></div><div class="field"><label for="calc-extra"><span>Extra per subscriber (PPV, customs, tips)</span><output id="out-extra" for="calc-extra">€8</output></label><input id="calc-extra" type="range" min="0" max="60" step="1" value="8"></div><div class="field"><label for="calc-fee"><span>Platform commission</span><output id="out-fee" for="calc-fee">20%</output></label><input id="calc-fee" type="range" min="0" max="40" step="1" value="20"></div></div>
 <div class="calc-result" aria-live="polite">
 <span class="label">Estimated net revenue per month</span>
@@ -316,35 +314,35 @@
 <small>Illustrative, before tax and social contributions. No guaranteed results.</small>
 </div>
 </div>
-<div class="cta-strip"><p>Want this forecast based on your real numbers?</p><a class="btn btn-primary" href="#contact">Book a free intake</a></div>
+<div class="cta-strip" data-reveal><p>Want this forecast based on your real numbers?</p><a class="btn btn-primary" href="#contact">Book a free intake</a></div>
 </div>
 </section>
 
 <section class="section band" id="process" aria-labelledby="h-process">
 <div class="wrap">
-<div class="section-head"><p class="label">How we work</p><h2 id="h-process">Five steps, <em>one point of contact</em></h2></div>
-<ol class="steps"><li><h3>Request</h3><p>You send an email. Within 48 hours you get a personal reply.</p></li><li><h3>Intake</h3><p>20 minutes, free: your situation, your ambition and whether we're a fit.</p></li><li><h3>Audit + roadmap</h3><p>We analyse all your profiles and deliver your 90-day plan with a revenue forecast.</p></li><li><h3>Launch</h3><p>Within a week the first changes are live: bios, links, pricing and schedule.</p></li><li><h3>Follow-up</h3><p>Weekly update, monthly KPI call and adjustments based on data.</p></li></ol>
+<div class="section-head" data-reveal><p class="label">How we work</p><h2 id="h-process">Five steps, <em>one point of contact</em></h2></div>
+<ol class="steps"><li data-reveal><h3>Request</h3><p>You send an email. Within 48 hours you get a personal reply.</p></li><li data-reveal><h3>Intake</h3><p>20 minutes, free: your situation, your ambition and whether we're a fit.</p></li><li data-reveal><h3>Audit + roadmap</h3><p>We analyse all your profiles and deliver your 90-day plan with a revenue forecast.</p></li><li data-reveal><h3>Launch</h3><p>Within a week the first changes are live: bios, links, pricing and schedule.</p></li><li data-reveal><h3>Follow-up</h3><p>Weekly update, monthly KPI call and adjustments based on data.</p></li></ol>
 </div>
 </section>
 
 <section class="section" id="pricing" aria-labelledby="h-pricing">
 <div class="wrap">
-<div class="section-head"><p class="label">Pricing</p><h2 id="h-pricing">Choose your <em>starting point</em></h2></div>
-<div class="plans"><article class="plan"><h3>Audit + roadmap</h3><p class="price">from €199<small>excl. VAT, one-off</small></p><ul><li>Analysis of all your current profiles</li><li>90-day roadmap per platform</li><li>Revenue forecast in three scenarios</li><li>One-hour review call</li></ul><a class="btn btn-ghost" href="#contact">Start with an audit</a></article><article class="plan featured"><span class="badge hi flag">Recommended</span><h3>Growth management</h3><p class="price">from €599<small>excl. VAT, per month</small></p><p class="note">Optional + 10% of your net growth above your starting level. 3-month minimum.</p><ul><li>Everything in the audit</li><li>Weekly content planning and hooks</li><li>Pricing and PPV strategy, customs menu</li><li>Monthly KPI report and adjustments</li></ul><a class="btn btn-primary" href="#contact">Book an intake</a></article><article class="plan"><h3>Tech package</h3><p class="price">€399<small>excl. VAT, first year</small></p><p class="note">From year 2: €199 excl. VAT per year.</p><ul><li>Your own hand-coded link-in-bio website</li><li>Domain and hosting included</li><li>Email capture and click tracking</li><li>Help with profile settings</li></ul><a class="btn btn-ghost" href="#contact">Request the tech package</a></article></div>
+<div class="section-head" data-reveal><p class="label">Pricing</p><h2 id="h-pricing">Choose your <em>starting point</em></h2></div>
+<div class="plans"><article data-reveal class="plan"><h3>Audit + roadmap</h3><p class="price">from €199<small>excl. VAT, one-off</small></p><ul><li>Analysis of all your current profiles</li><li>90-day roadmap per platform</li><li>Revenue forecast in three scenarios</li><li>One-hour review call</li></ul><a class="btn btn-ghost" href="#contact">Start with an audit</a></article><article data-reveal class="plan featured"><span class="badge hi flag">Recommended</span><h3>Growth management</h3><p class="price">from €599<small>excl. VAT, per month</small></p><p class="note">Optional + 10% of your net growth above your starting level. 3-month minimum.</p><ul><li>Everything in the audit</li><li>Weekly content planning and hooks</li><li>Pricing and PPV strategy, customs menu</li><li>Monthly KPI report and adjustments</li></ul><a class="btn btn-primary" href="#contact">Book an intake</a></article><article data-reveal class="plan"><h3>Tech package</h3><p class="price">€399<small>excl. VAT, first year</small></p><p class="note">From year 2: €199 excl. VAT per year.</p><ul><li>Your own hand-coded link-in-bio website</li><li>Domain and hosting included</li><li>Email capture and click tracking</li><li>Help with profile settings</li></ul><a class="btn btn-ghost" href="#contact">Request the tech package</a></article></div>
 </div>
 </section>
 
 <section class="section band" aria-labelledby="h-trust">
 <div class="wrap">
-<div class="section-head"><p class="label">Discretion and approach</p><h2 id="h-trust">Your brand, <em>your rules</em></h2></div>
-<div class="trust"><div><h3>18+ only</h3><p>We work exclusively with adult creators and verify this during the intake.</p></div><div><h3>Confidential</h3><p>NDA on request. No names, no screenshots and no case studies without your consent.</p></div><div><h3>You decide</h3><p>Your accounts and passwords stay yours. We advise, plan and build.</p></div><div><h3>By the rules</h3><p>Content aligned with each platform's guidelines. No fake followers and no bought engagement.</p></div></div>
+<div class="section-head" data-reveal><p class="label">Discretion and approach</p><h2 id="h-trust">Your brand, <em>your rules</em></h2></div>
+<div class="trust"><div data-reveal><h3>18+ only</h3><p>We work exclusively with adult creators and verify this during the intake.</p></div><div data-reveal><h3>Confidential</h3><p>NDA on request. No names, no screenshots and no case studies without your consent.</p></div><div data-reveal><h3>You decide</h3><p>Your accounts and passwords stay yours. We advise, plan and build.</p></div><div data-reveal><h3>By the rules</h3><p>Content aligned with each platform's guidelines. No fake followers and no bought engagement.</p></div></div>
 </div>
 </section>
 
 <section class="section" id="faq" aria-labelledby="h-faq">
 <div class="wrap faq">
-<div class="section-head"><p class="label">FAQ</p><h2 id="h-faq">What creators <em>ask us</em></h2></div>
-<div class="faq-list"><details><summary>What does it cost?</summary><p>Audit + roadmap from €199, tech package €399 (from year 2 €199 per year) and growth management from €599 a month, with an optional 10% of your net growth above your starting level. All prices exclude VAT. We don't take 50% of your revenue.</p></details><details><summary>Do I have to share my logins or passwords?</summary><p>No. You keep your accounts, your passwords and your fans. We deliver the plan, the copy, the schedule and the tech; you publish.</p></details><details><summary>I'm not active yet. Is that okay?</summary><p>Yes. We build your platforms from scratch, in the right order: reach first, then revenue.</p></details><details><summary>Is it also for male creators and couples?</summary><p>Yes. The strategy depends on your audience and your niche.</p></details><details><summary>How discreet is it?</summary><p>NDA on request, no names or screenshots without your consent, and we help you keep your real identity separate from your creator name.</p></details><details><summary>What about taxes?</summary><p>Creator income is taxable in Belgium. We don't give tax advice; sort this out with an accountant.</p></details><details><summary>How soon will I see results?</summary><p>We review the first measurable numbers after 30 days. No guarantees, but a plan we adjust every month.</p></details></div>
+<div class="section-head" data-reveal><p class="label">FAQ</p><h2 id="h-faq">What creators <em>ask us</em></h2></div>
+<div class="faq-list" data-reveal><details><summary>What does it cost?</summary><p>Audit + roadmap from €199, tech package €399 (from year 2 €199 per year) and growth management from €599 a month, with an optional 10% of your net growth above your starting level. All prices exclude VAT. We don't take 50% of your revenue.</p></details><details><summary>Do I have to share my logins or passwords?</summary><p>No. You keep your accounts, your passwords and your fans. We deliver the plan, the copy, the schedule and the tech; you publish.</p></details><details><summary>I'm not active yet. Is that okay?</summary><p>Yes. We build your platforms from scratch, in the right order: reach first, then revenue.</p></details><details><summary>Is it also for male creators and couples?</summary><p>Yes. The strategy depends on your audience and your niche.</p></details><details><summary>How discreet is it?</summary><p>NDA on request, no names or screenshots without your consent, and we help you keep your real identity separate from your creator name.</p></details><details><summary>What about taxes?</summary><p>Creator income is taxable in Belgium. We don't give tax advice; sort this out with an accountant.</p></details><details><summary>How soon will I see results?</summary><p>We review the first measurable numbers after 30 days. No guarantees, but a plan we adjust every month.</p></details></div>
 </div>
 </section>
 

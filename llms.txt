@@ -1,6 +1,6 @@
 # ACCMS
 
-> ACCMS (Adult Content Creator Management Services) is a Belgian service that helps adult (18+) content creators in Belgium and the Netherlands grow on Instagram, TikTok, X, OnlyFans, Fansly, MYM and F2F. Creators keep their own accounts, passwords and revenue; ACCMS delivers strategy, a 90-day roadmap, a revenue forecast and technical support. No revenue share of 50%: fixed prices.
+> ACCMS (Adult Content Creator Management Services) is a Belgian service that helps adult (18+) content creators in Belgium grow on Instagram, TikTok, X, OnlyFans, Fansly, MYM and F2F. Creators keep their own accounts, passwords and revenue; ACCMS delivers strategy, a 90-day roadmap, a revenue forecast and technical support. No revenue share of 50%: fixed prices.
 
 ## Pages
 - [Nederlands](https://www.accms.agency/): main site in Dutch
