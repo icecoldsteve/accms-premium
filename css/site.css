@@ -386,3 +386,163 @@ html.vt-theme::view-transition-old(root), html.vt-theme::view-transition-new(roo
   .hero h1 em { color: var(--accent-ink); background: none; }
   .motion [data-reveal]:not(.in) { opacity: 1; transform: none; }
 }
+
+/* ===== Premium enhancements ===== */
+
+/* Soft cursor glow (desktop only) */
+.cursor-glow {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  mix-blend-mode: screen;
+}
+body.has-cursor .cursor-glow { opacity: 1; }
+@media (prefers-reduced-motion: reduce), (max-width: 860px), (hover: none) {
+  .cursor-glow { display: none !important; }
+}
+
+/* Floating ambient orbs in hero */
+.ambient-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+  filter: blur(40px);
+  animation: float 12s ease-in-out infinite;
+  opacity: 0.6;
+}
+.orb:nth-child(1) { width: 280px; height: 280px; top: 10%; left: 5%; animation-delay: 0s; }
+.orb:nth-child(2) { width: 180px; height: 180px; top: 60%; right: 8%; animation-delay: -4s; }
+.orb:nth-child(3) { width: 120px; height: 120px; bottom: 15%; left: 20%; animation-delay: -8s; }
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+  33% { transform: translateY(-30px) translateX(15px) scale(1.05); }
+  66% { transform: translateY(20px) translateX(-10px) scale(0.95); }
+}
+@media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+
+/* Magnetic buttons – extra polish */
+.btn {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, background-color 0.3s ease;
+  will-change: transform;
+}
+.btn-primary:hover {
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 35%, transparent);
+  transform: translateY(-3px);
+}
+.btn-ghost:hover {
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+/* 3D tilt cards & plans */
+.card, .plan {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+.card:hover, .plan:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,.18), 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.plan.featured:hover {
+  box-shadow: 0 20px 50px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+/* Enhanced featured plan border pulse */
+.plan.featured::before {
+  animation: spin 8s linear infinite, pulse-border 3s ease-in-out infinite;
+}
+@keyframes pulse-border {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+/* Header on scroll */
+.site-header.scrolled {
+  box-shadow: 0 4px 30px rgba(0,0,0,.12);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  backdrop-filter: blur(20px);
+}
+
+/* Luxury link underlines */
+.main-nav a, .lang a {
+  position: relative;
+}
+.main-nav a::after, .lang a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.main-nav a:hover::after, .lang a:hover::after { width: 100%; }
+
+/* Subtle gold shimmer on labels */
+.label {
+  background: linear-gradient(90deg, var(--accent-ink), #FFE9B8, var(--accent-ink));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: label-shimmer 6s linear infinite;
+}
+@keyframes label-shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .label { animation: none; color: var(--accent-ink); background: none; -webkit-text-fill-color: currentColor; }
+}
+
+/* Stronger focus rings for premium feel */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+/* Lenis smooth scroll helpers */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+/* Cursor trail sits above glow but below content */
+.cursor-glow { z-index: 5; }
+
+/* Hero video visual */
+.hero-visual {
+  position: relative;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  aspect-ratio: 16 / 10;
+  max-width: 100%;
+}
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.25) 100%);
+  pointer-events: none;
+}
+@media (max-width: 860px) {
+  .hero-visual { aspect-ratio: 16 / 9; margin-top: 8px; }
+}
