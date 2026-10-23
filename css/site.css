@@ -835,3 +835,75 @@ html.lenis, html.lenis body { height: auto; }
 .hero-visual {
   box-shadow: 0 20px 50px rgba(0,0,0,.12), 0 0 0 1px rgba(229,169,60,.2);
 }
+
+/* ===== Contrast & readability improvements (light) ===== */
+:root, :root[data-theme="light"] {
+  --fg: #0F0F0F;
+  --muted: #3D3D3D;
+  --accent-ink: #7A4F0E;
+}
+
+body {
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.hero .lead,
+.section-head p,
+.promise,
+.col p,
+.funnel p,
+.plan p,
+.faq details p,
+.contact p {
+  color: var(--fg);
+  line-height: 1.65;
+}
+
+.muted,
+.micro,
+.platforms-label,
+.lang a {
+  color: #2C2C2C;
+}
+
+.label,
+.hero h1 em,
+h2 em,
+.accent-ink {
+  color: #6B450C;
+  font-weight: 600;
+}
+
+a {
+  color: #6B450C;
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: #0F0F0F;
+}
+
+.btn-ghost {
+  color: #6B450C;
+  border-color: #6B450C;
+}
+
+.main-nav a {
+  color: #0F0F0F;
+  font-weight: 650;
+}
+
+.usp li {
+  color: #1A1A1A;
+}
+
+/* Ensure visual card text stays readable */
+.visual-card-content {
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(0,0,0,.6);
+}
+.visual-card h3,
+.visual-card p {
+  color: #FFFFFF;
+}
