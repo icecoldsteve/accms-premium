@@ -20,3 +20,6 @@ python3 tools/render_assets.py .                 # alleen bij nieuw icoon/logo: 
 ```
 
 `tools/` wordt via `.vercelignore` niet gedeployed.
+
+## Licenties
+Platformiconen (Instagram, TikTok, X, YouTube) in `assets/platforms/`: Font Awesome Free 6.7.2 Brands, CC BY 4.0 (https://fontawesome.com/license/free). Merklogo's blijven handelsmerken van hun eigenaars.

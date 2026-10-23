@@ -133,6 +133,8 @@ em.serif, h1 em, h2 em { font-family: var(--font-accent); font-style: italic; fo
 .ring.inner .node { transform: rotate(var(--a)) translateX(calc(var(--s) * .29)) rotate(calc(var(--a) * -1)); }
 .node span { display: inline-block; transform: translate(-50%, -50%); white-space: nowrap; padding: 7px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-family: var(--font-display); font-weight: 650; font-size: clamp(.75rem, 1.6vw, .9375rem); color: var(--fg); animation: spin 80s linear infinite reverse; }
 .ring.inner .node span { animation-duration: 55s; animation-direction: normal; }
+.node span { display: inline-flex; align-items: center; gap: 7px; }
+.pf-icon { width: 1.05em; height: 1.05em; flex: none; color: var(--accent-ink); }
 .ring:not(.inner) .node span { border-color: var(--ring); }
 .ring .n0 { --a: -45deg; } .ring .n1 { --a: 45deg; } .ring .n2 { --a: 135deg; } .ring .n3 { --a: 225deg; }
 .ring.inner .n0 { --a: 0deg; } .ring.inner .n1 { --a: 90deg; } .ring.inner .n2 { --a: 180deg; } .ring.inner .n3 { --a: 270deg; }

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Generate the ACCMS static site (deploy) and an artifact preview from content.py."""
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -130,6 +131,22 @@ def lang_href(from_lang, to_lang, preview):
     return (up + f"{to_lang}/" + ("index.html" if preview else ""))
 
 
+# Platform icons: Font Awesome Free 6.7.2 Brands (CC BY 4.0, https://fontawesome.com/license/free).
+# Trademarks belong to their owners. Only reach platforms have a supplied icon; revenue platforms stay text.
+ICON_FILES = {"Instagram": "instagram.svg", "TikTok": "tiktok.svg", "X": "x.svg", "YouTube Shorts": "youtube.svg"}
+ICONS = {}
+for _name, _file in ICON_FILES.items():
+    _svg = (SITE / "assets" / "platforms" / _file).read_text(encoding="utf-8")
+    ICONS[_name] = (re.search(r'viewBox="([^"]+)"', _svg).group(1), re.search(r' d="([^"]+)"', _svg).group(1))
+
+
+def icon(name):
+    if name not in ICONS:
+        return ""
+    vb, d = ICONS[name]
+    return f'<svg class="pf-icon" viewBox="{vb}" aria-hidden="true" focusable="false"><path fill="currentColor" d="{d}"/></svg>'
+
+
 def privacy_href(lang, preview):
     return "privacy" + (".html" if preview else "")
 
@@ -144,7 +161,7 @@ def body(lang, prefix, preview):
     micro = "".join(f"<span>{m}</span>" for m in t["micro"])
 
     def nodes(items, start):
-        return "".join(f'<li class="node n{i}"><span>{p}</span></li>' for i, p in enumerate(items))
+        return "".join(f'<li class="node n{i}"><span>{icon(p)}{p}</span></li>' for i, p in enumerate(items))
 
     usp = "".join(f"<li>{u}</li>" for u in t["usp"])
     services = "".join(f'<div class="col"><h3>{a}</h3><p>{b}</p></div>' for a, b in t["services"])
