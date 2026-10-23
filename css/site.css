@@ -614,3 +614,47 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 860px) {
   .hero-visual { aspect-ratio: 16 / 9; margin-top: 12px; border-radius: 18px; }
 }
+
+/* Platform strip */
+.platforms { padding: 28px 0 8px; }
+.platforms-label {
+  text-align: center;
+  font-size: .75rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.platform-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px 40px;
+}
+.platform-item {
+  display: grid;
+  place-items: center;
+  opacity: .75;
+  transition: opacity .3s ease, transform .3s ease;
+  filter: grayscale(.3);
+}
+.platform-item:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  filter: none;
+}
+.platform-item img {
+  height: 36px;
+  width: auto;
+  max-width: 140px;
+}
+
+/* Extra hero polish */
+.hero-visual {
+  animation: hero-float 6s ease-in-out infinite;
+}
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
