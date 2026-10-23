@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Funnel Guide — ACCMS</title>
+<link rel="stylesheet" href="css/site.css">
+<style>
+.gate { min-height: 100vh; display: grid; place-items: center; background: var(--bg); }
+.gate-box { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px; max-width: 360px; width: 90%; text-align: center; }
+.gate-box h1 { margin: 0 0 8px; font-size: 1.5rem; }
+.gate-box p { color: var(--muted); margin: 0 0 20px; }
+.gate-box input { width: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 12px; font-size: 1.1rem; text-align: center; letter-spacing: .2em; margin-bottom: 12px; }
+.gate-box button { width: 100%; }
+.gate-error { color: #c0392b; font-size: .9rem; margin-top: 8px; display: none; }
+.content { display: none; padding: 40px 0 80px; }
+.content.visible { display: block; }
+.format { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+.format h3 { margin: 0 0 8px; }
+.format .script { background: #faf6ef; border-radius: 10px; padding: 14px; margin: 12px 0; font-size: .95rem; }
+.format .cta { font-weight: 650; color: var(--accent-ink); }
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <h1>Funnel Guide</h1>
+    <p>Voer de pincode in om de SFW TikTok-funnel te bekijken.</p>
+    <input type="password" id="pin" placeholder="••••" maxlength="4" inputmode="numeric">
+    <button class="btn btn-primary" id="unlock">Ontgrendel</button>
+    <div class="gate-error" id="err">Onjuiste pincode</div>
+  </div>
+</div>
+
+<div class="content" id="content">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="label">Intern</p>
+      <h1>SFW TikTok content voor de funnel</h1>
+      <p>TikTok → Instagram/linkhub → betaald platform. Volledig veilig, geen platformnaam, geen expliciete beloftes. CTA altijd “link in bio” of “meer op mijn Instagram”.</p>
+    </header>
+
+    <article class="format">
+      <h3>1. Outfit-transitie</h3>
+      <p>Gewone look → avondlook of themalook, gesynchroniseerd op een beat drop.</p>
+      <div class="script">
+        0-1s: “Outfit check voor vanavond”<br>
+        1-4s: casual look<br>
+        4-6s: hand voor camera<br>
+        6-10s: nette outfit
+      </div>
+      <p class="cta">CTA: “De rest van deze look staat op mijn Insta 👀”</p>
+    </article>
+
+    <article class="format">
+      <h3>2. POV-skit</h3>
+      <p>Korte, herkenbare rol die jouw persona versterkt.</p>
+      <div class="script">
+        “POV: je vraagt me om eerlijk advies”<br>
+        Camera in lens, overdreven serieus gezicht<br>
+        Komische reactie
+      </div>
+      <p class="cta">CTA: “Volg voor meer ongevraagde adviezen”</p>
+    </article>
+
+    <article class="format">
+      <h3>3. Day in my life</h3>
+      <p>15-25 seconden snelle montage van je dag, met persoonlijkheid.</p>
+      <div class="script">
+        Koffie maken · Outfit kiezen · Korte wandeling · Behind-the-scenes · Avondeten
+      </div>
+      <p class="cta">CTA: “Meer dagelijkse chaos op mijn Instagram.”</p>
+    </article>
+
+    <article class="format">
+      <h3>4. Gym of wellness</h3>
+      <p>Training, progressie of gymhumor, zonder expliciete bodyfocus.</p>
+      <div class="script">
+        “Wanneer iemand mijn squat rack wil”<br>
+        Korte gymclip · Komische reactie
+      </div>
+      <p class="cta">CTA: “Gym etiquette 101”</p>
+    </article>
+
+    <article class="format">
+      <h3>5. GRWM</h3>
+      <p>Get ready with me — make-up, haar, outfit of avondroutine.</p>
+      <div class="script">
+        “Getting ready voor een first date”<br>
+        Make-up, haar, outfit in snelle cuts<br>
+        “Oké, te veel of net genoeg?”
+      </div>
+      <p class="cta">CTA: “Poll staat op mijn Instagram Stories.”</p>
+    </article>
+
+    <article class="format">
+      <h3>6. Cosplay of karakter</h3>
+      <p>SFW-versie van een karakter, met een “full set”-teaser.</p>
+      <div class="script">
+        Make-up, pruik, accessoires in snelle cuts<br>
+        Volledige SFW cosplay-look
+      </div>
+      <p class="cta">CTA: “Meer foto’s van deze shoot op mijn andere pagina.”</p>
+    </article>
+
+    <article class="format">
+      <h3>7. Belgische humor</h3>
+      <p>Korte skit met Vlaamse of Belgische herkenbaarheid.</p>
+      <div class="script">
+        “Wanneer je zegt dat je vroeg naar huis gaat”<br>
+        Montage: koffie, winkel, friend date, nog één drankje<br>
+        “Het is nu 2 uur.”
+      </div>
+      <p class="cta">Lokale humor maakt je herkenbaar voor een Vlaams publiek.</p>
+    </article>
+
+    <article class="format">
+      <h3>8. Tease-and-redirect</h3>
+      <p>Toon een SFW fragment van een shoot, houd de rest bewust onvolledig.</p>
+      <div class="script">
+        “BTS van gisteren”<br>
+        Make-up, licht, camera, kledingkeuze<br>
+        Korte SFW preview<br>
+        “De volledige set staat niet hier.”
+      </div>
+      <p class="cta">CTA: “Link in bio” — zeg nooit OnlyFans, MYM of Fansly.</p>
+    </article>
+
+    <article class="format">
+      <h3>9. Comment-reply video</h3>
+      <p>Reageer op een comment of vraag uit je community. Bouwt interactie en vertrouwen.</p>
+      <p class="cta">CTA: “Stuur je vraag via Instagram.”</p>
+    </article>
+
+    <p style="margin-top:32px;color:var(--muted);font-size:.9rem;">Bron: Perplexity research · Alleen voor intern gebruik</p>
+  </div>
+</div>
+
+<script>
+const PIN = '6969';
+const pinInput = document.getElementById('pin');
+const unlock = document.getElementById('unlock');
+const err = document.getElementById('err');
+const gate = document.getElementById('gate');
+const content = document.getElementById('content');
+
+function tryUnlock() {
+  if (pinInput.value === PIN) {
+    gate.style.display = 'none';
+    content.classList.add('visible');
+    sessionStorage.setItem('accms-funnel', 'ok');
+  } else {
+    err.style.display = 'block';
+    pinInput.value = '';
+    pinInput.focus();
+  }
+}
+unlock.addEventListener('click', tryUnlock);
+pinInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+
+if (sessionStorage.getItem('accms-funnel') === 'ok') {
+  gate.style.display = 'none';
+  content.classList.add('visible');
+}
+</script>
+</body>
+</html>
