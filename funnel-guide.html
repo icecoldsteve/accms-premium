@@ -35,6 +35,7 @@ th{background:#faf6ef}
     <div class="gate-error" id="err">Onjuiste pincode</div>
   </div>
 </div>
+</div>
 <div class="content" id="content">
   <div class="wrap">
     <header class="section-head">
@@ -197,13 +198,8 @@ Link naar mijn OF
     <p style="margin-top:32px;color:var(--muted);font-size:.9rem;">Bronnen: Socialinsider 2026, SirenCY, Umbra, Metricool, Perplexity research. Alleen intern.</p>
   </div>
 </div>
-<script>
-const PIN='6969';
-const pin=document.getElementById('pin'),btn=document.getElementById('unlock'),err=document.getElementById('err'),gate=document.getElementById('gate'),content=document.getElementById('content');
-function go(){if(pin.value===PIN){gate.style.display='none';content.classList.add('visible');sessionStorage.setItem('accms-funnel','ok')}else{err.style.display='block';pin.value='';pin.focus()}}
-btn.onclick=go;pin.onkeydown=e=>{if(e.key==='Enter')go()};
-if(sessionStorage.getItem('accms-funnel')==='ok'){gate.style.display='none';content.classList.add('visible')}
-</script>
+</div>
+
 </body>
 </html>
 
@@ -317,7 +313,7 @@ Meer over mij 👇
 ❌ Slecht:
 OnlyFans model
 Link naar mijn OF
-@onlyfans</div>
+@onlyfans
     </article>
 
     <h2 style="margin-top:48px">Meet & verbeter</h2>
@@ -330,12 +326,11 @@ Link naar mijn OF
         <li>Website clicks (via UTM)</li>
         <li>Welke format het beste converteert</li>
       </ul>
-      <div class="stat">Na 20-30 video’s zie je patronen. Schaal wat werkt, stop wat niet werkt.</div>
+      <div class="stat">Na 20-30 video’s zie je patronen. Schaal wat werkt, stop wat niet werkt.
     </article>
 
     <p style="margin-top:32px;color:var(--muted);font-size:.9rem;">Bronnen: Socialinsider 2026, SirenCY, Umbra, Metricool, Perplexity. Alleen intern.</p>
-  </div>
-</div>
+  
 <script>
 const PIN='6969';
 const pin=document.getElementById('pin'),btn=document.getElementById('unlock'),err=document.getElementById('err'),gate=document.getElementById('gate'),content=document.getElementById('content');
